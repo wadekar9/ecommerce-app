@@ -3,7 +3,7 @@ import { View, TextInput, TextInputProps, StyleSheet, ViewStyle, StyleProp } fro
 import { EFonts, EFontSize, moderateScale } from '$constants/styles.constants';
 import { COLORS } from '$constants/colors.constants';
 import { useAppTheme } from '$hooks/common';
-import { EyeOff, Eye } from 'lucide-react-native';
+import { Eye, EyeOff } from '$assets/icons';
 import { ITheme } from '$types/common.types';
 import IconButton from '../buttons/icon-button.component';
 import ThemeText from '../themed/theme-text.component';
