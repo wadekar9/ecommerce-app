@@ -1,8 +1,8 @@
-import { typography, TypographyVariant } from '$styles/typography';
 import React from 'react';
 import { Text, TextStyle, StyleProp, TextProps } from 'react-native';
 import { useAppTheme } from '$hooks/common';
 import { COLORS } from '$constants/colors.constants';
+import { typography, TypographyVariant } from '$utils/typography';
 
 interface ThemeTextProps extends Omit<TextProps, 'style'> {
   variant?: TypographyVariant;

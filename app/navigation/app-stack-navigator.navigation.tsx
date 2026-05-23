@@ -12,7 +12,7 @@ const AppStackNavigator = () => {
 
     return (
         <NavigationContainer ref={appStackNavigationRef}>
-            <AppStack.Navigator screenOptions={{ headerShown: false, animation: 'fade' }}>
+            <AppStack.Navigator screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
                 <AppStack.Screen name={EStackScreens.PRODUCTS} component={AppRoutes.Products} />
                 <AppStack.Screen name={EStackScreens.PRODUCT_DETAILS} component={AppRoutes.ProductDetails} />
                 <AppStack.Screen name={EStackScreens.CART} component={AppRoutes.Cart} />

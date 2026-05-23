@@ -3,9 +3,9 @@ import React from 'react'
 import { EFonts, EFontSize, moderateScale } from '$constants/styles.constants'
 import { COLORS } from '$constants/colors.constants'
 import { useAppTheme, useDebounce } from '$hooks/common';
-import { Search, X } from 'lucide-react-native';
 import { ITheme } from '$types/common.types';
 import { IconButton } from '../buttons';
+import { Close, Search } from '$assets/icons';
 
 interface BaseSearchbarRef {
     clear: () => void;
@@ -102,7 +102,7 @@ const BaseSearchbar = React.forwardRef<BaseSearchbarRef, BaseSearchbarProps>(({
                     style={styles.icon}
                     accessibilityLabel="Clear search"
                 >
-                    <X width={moderateScale(20)} height={moderateScale(20)} color={colors['icon-default']} />
+                    <Close width={moderateScale(20)} height={moderateScale(20)} color={colors['icon-default']} />
                 </IconButton>
             )}
         </View>
@@ -119,7 +119,7 @@ const styling = (theme: ITheme) => StyleSheet.create({
         backgroundColor: COLORS[theme]['surface-alt'],
         paddingLeft: moderateScale(12),
         gap: moderateScale(10),
-        borderWidth: moderateScale(1),
+        borderWidth: 0.8,
         borderColor: COLORS[theme].border,
         flexDirection: 'row',
         alignItems: 'stretch',

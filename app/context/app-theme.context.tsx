@@ -6,7 +6,7 @@ export const AppThemeContext = createContext<IThemeContext | undefined>(undefine
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [theme, setTheme] = useState<ITheme>('light');
-    const changeTheme = (theme: ITheme) => setTheme(theme);
+    const changeTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
     const value = useMemo(() => ({ theme, changeTheme }), [theme]);
 
     return (

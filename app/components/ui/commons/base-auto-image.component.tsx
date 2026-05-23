@@ -1,13 +1,10 @@
 import React from "react";
 import { moderateScale } from "$constants/styles.constants"
-import { useAutoImage } from "$hooks/common";
-import { Platform, StyleSheet, StyleProp, ViewStyle, View, ViewProps } from "react-native"
-import FastImage, { FastImageProps, ImageStyle, Source } from "@d11/react-native-fast-image";
+import { StyleSheet, StyleProp, ViewStyle, View, ViewProps } from "react-native"
+import FastImage, { FastImageProps, ImageStyle } from "@d11/react-native-fast-image";
 import { COLORS } from "$constants/colors.constants";
 
 interface AutoImageProps extends Omit<FastImageProps, 'style'> {
-    width?: number;
-    height?: number;
     wrapperStyle?: StyleProp<ViewStyle>;
     imageStyle?: StyleProp<ImageStyle>;
     wrapperProps?: ViewProps;
@@ -15,21 +12,10 @@ interface AutoImageProps extends Omit<FastImageProps, 'style'> {
 
 const BaseAutoImage = (props: AutoImageProps) => {
 
-    const { width: BASE_WIDTH, height: BASE_HEIGHT, imageStyle, wrapperStyle, wrapperProps, ...imageProps } = props;
-    const source = imageProps.source as Source;
-    const headers = source?.headers;
-
-    const [width, height] = useAutoImage(
-        Platform.select({
-            web: (source?.uri as string) ?? (source as string),
-            default: source?.uri as string,
-        }),
-        headers,
-        [BASE_WIDTH, BASE_HEIGHT],
-    )
+    const { imageStyle, wrapperStyle, wrapperProps, ...imageProps } = props;
 
     return (
-        <View {...wrapperProps} style={[styles.wrapper, { width, height }, wrapperStyle]}>
+        <View {...wrapperProps} style={[styles.wrapper, wrapperStyle]}>
             <FastImage
                 {...imageProps}
                 style={[styles.image, imageStyle]}
