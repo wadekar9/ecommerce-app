@@ -1,0 +1,1 @@
+export { default as BaseAutoImage } from './base-auto-image.component';
