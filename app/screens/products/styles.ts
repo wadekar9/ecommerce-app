@@ -2,8 +2,9 @@ import { COLORS } from "$constants/colors.constants";
 import { moderateScale } from "$constants/styles.constants";
 import { ITheme } from "$types/common.types";
 import { StyleSheet } from "react-native";
+import { EdgeInsets } from "react-native-safe-area-context";
 
-export const styling = (theme: ITheme) => StyleSheet.create({
+export const styling = (theme: ITheme, insets: EdgeInsets) => StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: COLORS[theme].background
@@ -14,10 +15,12 @@ export const styling = (theme: ITheme) => StyleSheet.create({
     },
     contentContainer: {
         padding: moderateScale(20),
+        paddingBottom: insets.bottom + moderateScale(20),
         gap: moderateScale(15),
     },
     header: {
         width: '100%',
-        marginBottom: moderateScale(10)
+        paddingHorizontal: moderateScale(20),
+        paddingVertical: moderateScale(10),
     }
 });

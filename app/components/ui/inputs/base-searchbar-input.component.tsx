@@ -40,7 +40,7 @@ const BaseSearchbar = React.forwardRef<BaseSearchbarRef, BaseSearchbarProps>(({
 
     const [isFocused, setIsFocused] = React.useState<boolean>(false);
     const [search, setSearch] = React.useState(value || '');
-    const debouncedSearch = useDebounce(search);
+    const debouncedSearch = useDebounce(search, 500);
 
     React.useImperativeHandle(ref, () => ({
         clear: () => {
@@ -81,7 +81,7 @@ const BaseSearchbar = React.forwardRef<BaseSearchbarRef, BaseSearchbarProps>(({
                     multiline={false}
                     autoCorrect={autoCorrect}
                     autoComplete={autoComplete}
-                    clearButtonMode={clearButtonMode}
+                    clearButtonMode={'never'}
                     keyboardAppearance={theme}
                     cursorColor={colors['brand-primary']}
                     selectionColor={colors['brand-primary']}
@@ -99,7 +99,7 @@ const BaseSearchbar = React.forwardRef<BaseSearchbarRef, BaseSearchbarProps>(({
             {search.length > 0 && (
                 <IconButton
                     onPress={handleClear}
-                    style={styles.icon}
+                    style={[styles.icon, { paddingRight: moderateScale(13) }]}
                     accessibilityLabel="Clear search"
                 >
                     <Close width={moderateScale(20)} height={moderateScale(20)} color={colors['icon-default']} />

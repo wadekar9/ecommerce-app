@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, View } from 'react-native'
 import React from 'react'
 import { ITheme } from '$types/common.types';
 import { DEVICE_WIDTH, EFonts, EFontSize, moderateScale } from '$constants/styles.constants';
@@ -7,12 +7,14 @@ import { BaseAutoImage, ThemeText } from '$components/ui';
 import { StarRatingDisplay } from 'react-native-star-rating-widget';
 import { appStackNavigationRef } from '$utils/navigation';
 import { EStackScreens } from '$constants/screen.constants';
+import { IProduct } from '$types/data.types';
 
 interface IProductItemProps {
     theme: ITheme;
+    product: IProduct;
 }
 
-const ProductItem: React.FC<IProductItemProps> = ({ theme }) => {
+const ProductItem: React.FC<IProductItemProps> = ({ theme, product }) => {
 
     const styles = styling(theme);
 
@@ -20,28 +22,26 @@ const ProductItem: React.FC<IProductItemProps> = ({ theme }) => {
         <Pressable
             style={styles.container}
             onPress={() => appStackNavigationRef.current?.navigate(EStackScreens.PRODUCT_DETAILS, {
-                id: '123'
+                id: `${product.id}`
             })}
         >
             <BaseAutoImage
-                source={{ uri: 'https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp' }}
+                source={{ uri: product.thumbnail }}
                 wrapperStyle={styles.image}
             />
             <View style={styles.content}>
-                <ThemeText style={styles.title}>Essence Mascara Lash Princess</ThemeText>
+                <ThemeText style={styles.title}>{product.title}</ThemeText>
                 <View style={styles.flexRow}>
-                    <ThemeText style={[styles.textStyle]}>$9.99</ThemeText>
-                    <ThemeText style={[styles.textStyle, { color: COLORS[theme]['icon-destructive'] }]}>10.48% off</ThemeText>
+                    <ThemeText style={[styles.textStyle]}>${product.price}</ThemeText>
+                    <ThemeText style={[styles.textStyle, { color: COLORS[theme]['icon-destructive'] }]}>{product.discountPercentage}% off</ThemeText>
                 </View>
                 <View style={styles.flexRow}>
-                    <StarRatingDisplay starSize={moderateScale(16)} rating={4.5} starStyle={styles.rating} />
-                    <ThemeText style={[styles.textStyle]}>(4.56)</ThemeText>
+                    <StarRatingDisplay starSize={moderateScale(16)} rating={Number(product.rating || 0)} starStyle={styles.rating} />
+                    <ThemeText style={[styles.textStyle]}>{`(${product.rating})`}</ThemeText>
                 </View>
-                <ThemeText style={[styles.textStyle]}>231 Reviews</ThemeText>
+                <ThemeText style={[styles.textStyle]}>{product.reviews?.length || 0} Reviews</ThemeText>
                 <View style={[styles.flexRow, styles.tags]}>
-                    <ThemeText style={styles.tag}>Makeup</ThemeText>
-                    <ThemeText style={styles.tag}>Makeup</ThemeText>
-                    <ThemeText style={styles.tag}>Makeup</ThemeText>
+                    {product.tags?.slice(0, 2).map((tag, index) => (<ThemeText style={styles.tag} key={`${index}`}>{tag}</ThemeText>))}
                 </View>
             </View>
         </Pressable>

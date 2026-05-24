@@ -1,3 +1,5 @@
+import { showMessage } from "react-native-flash-message";
+
 export const convertToFormData = <T extends Record<string, any>>(data: T): FormData => {
     const formData = new FormData();
 
@@ -28,3 +30,23 @@ export const convertToQueryParams = (params: Record<string, any>) => {
     }
     return keyValuePairs.join('&');
 };
+
+export const handleErrorMessage = (error: any) => {
+
+    let errorMessage = 'Something went wrong';
+
+    if (error.response && error.response.data && error.response.data.message) {
+        errorMessage = error.response.data.message;
+    } else if (error.message) {
+        errorMessage = error.message;
+    }
+
+    showMessage({
+        message: 'Unable to proceed',
+        description: errorMessage,
+        type: 'danger',
+        icon: 'danger',
+        hideOnPress: true,
+        duration: 3000
+    })
+}
