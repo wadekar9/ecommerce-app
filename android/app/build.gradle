@@ -92,6 +92,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('development-release.keystore')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
     }
     buildTypes {
         debug {
@@ -105,6 +111,13 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.caverock:androidsvg-aar:1.4'
+    }
+    exclude group: 'com.caverock', module: 'androidsvg'
 }
 
 dependencies {
