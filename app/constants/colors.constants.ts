@@ -78,6 +78,8 @@ export const COLORS = {
 
     // Effects
     shadow: 'rgba(15, 23, 42, 0.08)',
+    white: '#FFFFFF',
+    black: '#000000'
   },
 
   dark: {
@@ -113,5 +115,7 @@ export const COLORS = {
 
     // Effects
     shadow: 'rgba(0, 0, 0, 0.4)',
+    white: '#FFFFFF',
+    black: '#000000'
   },
 } as const;

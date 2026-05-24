@@ -37,7 +37,8 @@ const BaseButton: React.FC<BaseButtonProps> = ({
       style={[
         styles.wrapper,
         outline && styles.outlineWrapper,
-        disabled && { opacity: 0.5 }
+        disabled && { opacity: 0.5 },
+        containerStyle
       ]}
       accessibilityRole={props.accessibilityRole || "button"}
       accessibilityState={{ ...props.accessibilityState, disabled: !!disabled }}

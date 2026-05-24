@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { ITheme } from '$types/common.types';
 import { DEVICE_WIDTH, EFonts, EFontSize, moderateScale } from '$constants/styles.constants';
 import { COLORS } from '$constants/colors.constants';
 import { BaseAutoImage, ThemeText } from '$components/ui';
 import { StarRatingDisplay } from 'react-native-star-rating-widget';
+import { appStackNavigationRef } from '$utils/navigation';
+import { EStackScreens } from '$constants/screen.constants';
 
 interface IProductItemProps {
     theme: ITheme;
@@ -15,7 +17,12 @@ const ProductItem: React.FC<IProductItemProps> = ({ theme }) => {
     const styles = styling(theme);
 
     return (
-        <View style={styles.container}>
+        <Pressable
+            style={styles.container}
+            onPress={() => appStackNavigationRef.current?.navigate(EStackScreens.PRODUCT_DETAILS, {
+                id: '123'
+            })}
+        >
             <BaseAutoImage
                 source={{ uri: 'https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp' }}
                 wrapperStyle={styles.image}
@@ -37,7 +44,7 @@ const ProductItem: React.FC<IProductItemProps> = ({ theme }) => {
                     <ThemeText style={styles.tag}>Makeup</ThemeText>
                 </View>
             </View>
-        </View>
+        </Pressable>
     )
 }
 

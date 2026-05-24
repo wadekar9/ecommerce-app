@@ -5,3 +5,7 @@ export { default as Eye } from './eye.svg';
 export { default as ShoppingBag } from './shopping-bag.svg';
 export { default as Sun } from './sun.svg';
 export { default as Moon } from './moon.svg';
+export { default as Star } from './star.svg';
+export { default as ChevronLeft } from './chevron-left.svg';
+export { default as Plus } from './plus.svg';
+export { default as Minus } from './minus.svg';

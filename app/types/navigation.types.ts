@@ -3,7 +3,7 @@ import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-naviga
 
 export type AppStackParamsList = {
     [EStackScreens.PRODUCTS]: undefined;
-    [EStackScreens.PRODUCT_DETAILS]: undefined;
+    [EStackScreens.PRODUCT_DETAILS]: { id: string };
     [EStackScreens.CART]: undefined;
 }
 
