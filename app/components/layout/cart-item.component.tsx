@@ -45,7 +45,6 @@ const styling = (theme: ITheme) => StyleSheet.create({
         width: moderateScale(100),
         height: moderateScale(100),
         borderRadius: moderateScale(8),
-        backgroundColor: COLORS[theme].surface,
         overflow: 'hidden'
     },
     info: {

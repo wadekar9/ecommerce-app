@@ -14,11 +14,11 @@ const Products: React.FC<AppStackScreenProps<EStackScreens.PRODUCTS>> = () => {
     const { theme, insets, colors } = useAppTheme();
     const styles = styling(theme, insets);
     const [search, setSearch] = useState<string>("");
-    const { products, page, loading, handleLoadMore, handleRefresh } = useProducts(search)
+    const { products, page, loading, handleLoadMore, handleRefresh, cartLength } = useProducts(search)
 
     return (
         <ThemedView>
-            <HomeHeader />
+            <HomeHeader cartLength={cartLength} />
             <View style={styles.header}>
                 <BaseSearchBar value={search} onChange={setSearch} />
             </View>

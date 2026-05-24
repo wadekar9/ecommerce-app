@@ -10,6 +10,8 @@ type StoreActions = {
     setProducts: (products: IProduct[], page?: number) => void;
     addToCart: (id: number) => void;
     removeFromCart: (id: number) => void;
+    increaseProductQuantity: (id: number) => void;
+    decreaseProductQuantity: (id: number) => void;
 }
 
 type Store = StoreState & StoreActions;
@@ -28,7 +30,7 @@ export const useAppStore = create<Store>((set, get) => ({
         const { products } = get();
         const item = products.find((product) => product.id === id)
         if (item) {
-            set((state) => ({ cart: [...state.cart, item] }));
+            set((state) => ({ cart: [...state.cart, { ...item, quantity: 1 }] }));
         }
     },
     removeFromCart: (id) => {
@@ -37,5 +39,11 @@ export const useAppStore = create<Store>((set, get) => ({
         if (item) {
             set((state) => ({ cart: state.cart.filter((p) => p.id !== id) }));
         }
+    },
+    increaseProductQuantity: (id: number) => {
+        set((state) => ({ cart: state.cart.map((p) => p.id === id ? { ...p, quantity: (p.quantity || 0) + 1 } : p) }));
+    },
+    decreaseProductQuantity: (id: number) => {
+        set((state) => ({ cart: state.cart.map((p) => p.id === id ? { ...p, quantity: (p.quantity || 0) - 1 } : p) }));
     }
 }))

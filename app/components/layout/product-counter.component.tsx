@@ -8,21 +8,32 @@ import { Minus, Plus } from '$assets/icons';
 
 interface IProductCounterProps {
     theme: ITheme;
+    quantity: number;
+    stock: number;
+    handleAction: (type: 'increase' | 'decrease') => void;
 }
 
-const ProductCounter: React.FC<IProductCounterProps> = ({ theme }) => {
+const ProductCounter: React.FC<IProductCounterProps> = ({ theme, quantity, stock, handleAction }) => {
 
     const styles = styling(theme);
 
     return (
         <View style={styles.container}>
-            <IconButton style={styles.counterButton}>
+            <IconButton
+                style={styles.counterButton}
+                disabled={quantity === 1}
+                onPress={() => handleAction('decrease')}
+            >
                 <Minus width={moderateScale(20)} height={moderateScale(20)} color={COLORS[theme].white} />
             </IconButton>
 
-            <ThemeText>{'1'}</ThemeText>
+            <ThemeText>{String(quantity)}</ThemeText>
 
-            <IconButton style={styles.counterButton}>
+            <IconButton
+                style={styles.counterButton}
+                disabled={(quantity === stock) || (stock <= 0)}
+                onPress={() => handleAction('increase')}
+            >
                 <Plus width={moderateScale(20)} height={moderateScale(20)} color={COLORS[theme].white} />
             </IconButton>
         </View>

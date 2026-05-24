@@ -28,6 +28,7 @@ export interface IProduct {
     readonly tags: string[];
     readonly reviews: Review[];
     readonly thumbnail: string;
+    quantity?: number;
 }
 
 export interface IProductDetails {

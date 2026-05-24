@@ -22,7 +22,7 @@ const ProductItem: React.FC<IProductItemProps> = ({ theme, product }) => {
         <Pressable
             style={styles.container}
             onPress={() => appStackNavigationRef.current?.navigate(EStackScreens.PRODUCT_DETAILS, {
-                id: `${product.id}`
+                id: product.id
             })}
         >
             <BaseAutoImage

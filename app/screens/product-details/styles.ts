@@ -8,7 +8,6 @@ export const styling = (theme: ITheme) => StyleSheet.create({
         width: DEVICE_WIDTH,
         height: undefined,
         aspectRatio: 1.25,
-        backgroundColor: COLORS[theme].border,
         borderBottomRightRadius: moderateScale(20),
         borderBottomLeftRadius: moderateScale(20),
     },
@@ -85,6 +84,7 @@ export const styling = (theme: ITheme) => StyleSheet.create({
         color: COLORS[theme].surface,
         fontFamily: EFonts.MEDIUM,
         fontSize: EFontSize.XS,
+        textTransform: 'capitalize'
     },
     actions: {
         flexDirection: 'row',
@@ -113,5 +113,21 @@ export const styling = (theme: ITheme) => StyleSheet.create({
         backgroundColor: COLORS[theme]["surface-alt"],
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    badge: {
+        position: 'absolute',
+        top: moderateScale(5),
+        right: moderateScale(5),
+        width: moderateScale(20),
+        height: moderateScale(20),
+        backgroundColor: COLORS[theme]["brand-primary"],
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: moderateScale(50)
+    },
+    badgeText: {
+        fontFamily: EFonts.SEMI_BOLD,
+        fontSize: EFontSize.XS,
+        color: COLORS[theme].surface,
     }
 });
