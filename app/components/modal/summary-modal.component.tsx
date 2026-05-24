@@ -5,14 +5,16 @@ import { COLORS } from '$constants/colors.constants';
 import { moderateScale } from '$constants/styles.constants';
 import { EdgeInsets } from 'react-native-safe-area-context';
 import { ThemeText } from '$components/ui';
+import { ISummary } from '$types/data.types';
 
 interface ISummaryModalProps {
     theme: ITheme;
     insets: EdgeInsets;
+    summary: ISummary;
 }
 
 const SummaryModal = forwardRef<ISummaryModalRef, ISummaryModalProps>(({
-    theme, insets
+    theme, insets, summary
 }, ref) => {
 
     const [visible, setVisible] = useState<boolean>(false);
@@ -40,26 +42,26 @@ const SummaryModal = forwardRef<ISummaryModalRef, ISummaryModalProps>(({
                         <ThemeText variant='h2'>Order Summary</ThemeText>
                         <View style={styles.flexRow}>
                             <ThemeText variant='body2' style={styles.label}>Total Price</ThemeText>
-                            <ThemeText variant='body2' style={styles.value}>$1000.00</ThemeText>
+                            <ThemeText variant='body2' style={styles.value}>${summary.total.toFixed(2)}</ThemeText>
                         </View>
                         <View style={styles.flexRow}>
                             <ThemeText variant='body2' style={styles.label}>Total Discount</ThemeText>
-                            <ThemeText variant='body2' style={styles.value}>$1000.00</ThemeText>
+                            <ThemeText variant='body2' style={styles.value}>-${summary.discount.toFixed(2)}</ThemeText>
                         </View>
                         <View style={styles.flexRow}>
                             <ThemeText variant='body2' style={styles.label}>Tax</ThemeText>
-                            <ThemeText variant='body2' style={styles.value}>$1000.00</ThemeText>
+                            <ThemeText variant='body2' style={styles.value}>${summary.tax.toFixed(2)}</ThemeText>
                         </View>
                         <View style={styles.flexRow}>
                             <ThemeText variant='body2' style={styles.label}>Shipping Fee</ThemeText>
-                            <ThemeText variant='body2' style={styles.value}>$1000.00</ThemeText>
+                            <ThemeText variant='body2' style={styles.value}>${summary.shipping.toFixed(2)}</ThemeText>
                         </View>
 
                         <View style={styles.devider} />
 
                         <View style={styles.flexRow}>
                             <ThemeText variant='body1' style={styles.label}>Total Price</ThemeText>
-                            <ThemeText variant='body1' style={styles.value}>$1000.00</ThemeText>
+                            <ThemeText variant='body1' style={styles.value}>${summary.grand.toFixed(2)}</ThemeText>
                         </View>
                     </View>
                 </Pressable>

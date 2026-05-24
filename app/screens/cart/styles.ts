@@ -35,10 +35,17 @@ export const styling = (theme: ITheme) => StyleSheet.create({
         padding: moderateScale(16),
         gap: moderateScale(5),
         height: moderateScale(120),
+        borderTopWidth: moderateScale(2),
+        borderTopColor: COLORS[theme].border,
     },
     footerAction: {
         height: '100%',
         justifyContent: 'center',
         paddingHorizontal: moderateScale(6)
+    },
+    placeholder: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: moderateScale(12)
     }
 });

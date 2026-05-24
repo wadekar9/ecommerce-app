@@ -55,3 +55,11 @@ export interface IProductDetails {
     readonly images: string[];
     readonly thumbnail: string;
 }
+
+export interface ISummary {
+    readonly total: number;
+    readonly discount: number;
+    readonly tax: number;
+    readonly shipping: number;
+    readonly grand: number;
+}
