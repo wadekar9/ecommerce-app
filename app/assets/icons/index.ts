@@ -9,3 +9,5 @@ export { default as Star } from './star.svg';
 export { default as ChevronLeft } from './chevron-left.svg';
 export { default as Plus } from './plus.svg';
 export { default as Minus } from './minus.svg';
+export { default as Trash } from './trash-2.svg';
+export { default as CircleAlert } from './circle-alert.svg';
